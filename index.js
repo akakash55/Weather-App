@@ -1,6 +1,6 @@
 const api = {
-    key: "91f571586d54457d2ad44e933e1d404f",
-    baseurl: "https://api.openweathermap.org/data/2.5/"
+    key: config.key,
+    baseurl: config.baseurl
 }
 
 const searchBox = document.querySelector('.search-box');
@@ -9,7 +9,7 @@ searchBox.addEventListener('keypress', setQuery);
 function setQuery(event) {
     if (event.keyCode === 13) { // enter key is pressed
         getResults(searchBox.value);
-        // console.log(searchBox.value);
+        console.log(searchBox.value);
     }
 }
 
@@ -35,6 +35,13 @@ function displayResults(weather) {
 
     let weather_el = document.querySelector('.current .weather');
     weather_el.innerText = weatherCondition;
+
+    // var img = document.createElement("img");
+    let icon = document.querySelector('.current .icon img');
+    icon.src = ` http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+
+    
+    // icon.appendChild(img);
 
     let highLow = document.querySelector('.current .high-low');
     highLow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
@@ -74,5 +81,32 @@ function changeBackgroundImage(weatherCondition) {
     }
     else if (weatherCondition === "Rain") {
         document.body.style.backgroundImage = "url('images/rain.jpg')";
+    }
+    else if (weatherCondition === "Smoke") {
+        document.body.style.backgroundImage = "url('images/smoke.jpg')";
+    }
+    else if (weatherCondition === "Thunderstorm") {
+        document.body.style.backgroundImage = "url('images/thunderstorm.jpg')";
+    }
+    else if (weatherCondition === "Drizzle") {
+        document.body.style.backgroundImage = "url('images/drizzle.jpg')";
+    }
+    else if (weatherCondition === "Dust") {
+        document.body.style.backgroundImage = "url('images/dust.jpg')";
+    }
+    else if (weatherCondition === "Fog") {
+        document.body.style.backgroundImage = "url('images/fog.jpg')";
+    }
+    else if (weatherCondition === "Sand") {
+        document.body.style.backgroundImage = "url('images/Sand.jpg')";
+    }
+    else if (weatherCondition === "Ash") {
+        document.body.style.backgroundImage = "url('images/Ash.jpg')";
+    }
+    else if (weatherCondition === "Squall") {
+        document.body.style.backgroundImage = "url('images/Squall.jpg')";
+    }
+    else if (weatherCondition === "Tornado") {
+        document.body.style.backgroundImage = "url('images/Tornado.jpg')";
     }
 }
